@@ -12,6 +12,22 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+/* LOGIN */
+.main {
+  display: flex;
+  justify-content: right;
+  height: 657px;
+
+  background-color: rgba(20, 20, 20, 0.856);
+}
+.sub-main {
+  display: flex;
+  width: 55%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245, 238, 238);
+}
 
 .App-header {
   background-color: #e5e6e7;
@@ -24,7 +40,7 @@
   color: rgb(26, 25, 25);
 }
 
-.list{
+.list {
   background-color: #e5e6e7;
   min-height: 100vh;
   display: flex;
@@ -35,16 +51,83 @@
   color: rgb(26, 25, 25);
 }
 
-.btn-space{
+.btn-space {
   margin-right: 50px;
-
 }
 .App-link {
   color: #61dafb;
 }
 
-.text-danger{
+.text-danger {
   color: red;
   font-size: medium;
   padding-right: 150px;
+}
+
+/* NEW */
+.btn-lgn {
+  width: 45%;
+  height: 35px;
+  background-color: rgb(42, 43, 44);
+  font-size: 15px;
+  border-radius: 40px;
+  color: white;
+  border: skyblue;
+  cursor: pointer;
+}
+.name {
+  width: 420px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1.5px solid rgb(245, 245, 245);
+}
+.login-button {
+  text-align: center;
+  margin-top: 10px;
+}
+h4 {
+  color: darkgrey;
+}
+
+/* button {
+  width: 45%;
+  height: 35px;
+  background-color: rgba(7, 78, 119, 0.856);
+  font-size: 15px;
+  border-radius: 40px;
+  color: white;
+  border: skyblue;
+  cursor: pointer;
+} */
+
+.paginationBtn{
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBtn a {
+  padding: 3px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #0c0c0c;
+  color: rgb(20, 20, 20);
+  cursor: pointer;
+  /* background-color: white; */
+}
+
+.paginationBtn a:hover {
+  color: black;
+  background-color: rgb(4, 173, 224);
+}
+
+.paginationActive a{
+  color: white;
+  background-color: rgb(4, 173, 224);
+  /* padding: 2px 0px; */
+}
+table tbody{
+  background-color: whitesmoke;
 }

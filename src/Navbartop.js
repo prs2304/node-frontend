@@ -1,9 +1,29 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useEffect, useState } from "react";
+import { NavDropdown } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Navbartop() {
+  const navigate = useNavigate();
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const item = JSON.parse(localStorage.getItem('user'));
+    if (item) {
+     setItems(item?.data);
+    //  console.log(item)
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // localStorage.removeItem('token-info');
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+// console.log(items,"HOME")
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -12,24 +32,16 @@ function Navbartop() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/list">List</Nav.Link>
-            <Nav.Link href="/">Upload</Nav.Link>
-            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
+            <Nav.Link href="/upload">Upload</Nav.Link>
+           
           </Nav>
           <Nav>
             {/* <Nav.Link href="#deets">More deets</Nav.Link> */}
-            <Nav.Link eventKey={2} href="#memes">
-              User
-            </Nav.Link>
+            <NavDropdown 
+            title={items.length !== 0 ? <i className="bi bi-person-circle">{" "+items.result[0].username}</i> : items == undefined ? "User" : "User"}
+             id="collasible-nav-dropdown">
+              <NavDropdown.Item onClick={handleLogout}>logout</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

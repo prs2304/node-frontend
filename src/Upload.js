@@ -59,9 +59,6 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/navbar" element={<Navbartop />} />
-      </Routes>
       <Navbartop />
       <header className="App-header">
         <h1>File Upload Multiple</h1>
@@ -92,7 +89,7 @@ function App() {
             variant="danger"
             onClose={() => setShowError(false)}
             dismissible
-            style={{ marginTop:"10px" }}
+            style={{ marginTop:"10px", padding: "14px 26px 10px 10px" }}
           >
             Error occurred:{errMsg.message}
           </Alert>
