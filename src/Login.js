@@ -32,7 +32,7 @@ function Login() {
 
     if (email !== "" && password !== "") {
       axios
-        .post("http://localhost:5000/login", data, {
+        .post("http://3.6.87.116:5000/login", data, {
           headers: {
             "Content-Type": "application/json",
           },

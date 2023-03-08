@@ -34,7 +34,7 @@ export default function Register() {
 
     if (email !== "" && password !== "") {
       axios
-        .post("http://localhost:5000/register", data, {
+        .post("http://3.6.87.116:5000/register", data, {
           headers: {
             "Content-Type": "application/json",
           },

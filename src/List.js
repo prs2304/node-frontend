@@ -25,7 +25,7 @@ export default function List() {
   const auth = JSON.parse(localStorage.getItem('user'));
 
   const loadData = async () => {
-    const data = await axios.get(`http://localhost:5000/list`, {
+    const data = await axios.get(`http://3.6.87.116:5000/list`, {
       headers: {
         "Content-Type": "application/json",
         "x-access-token": auth.data.token,
@@ -41,7 +41,7 @@ export default function List() {
 
   const handleDelete = (e) => {
     axios
-      .delete(`http://localhost:5000/${e}`)
+      .delete(`http://3.6.87.116:5000/${e}`)
       .then((res) => {
         if (res) {
           loadData();
