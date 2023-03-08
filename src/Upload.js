@@ -35,7 +35,7 @@ function App() {
 
     if (files !== "") {
       axios
-        .post("http://3.6.87.116:5000/upload", formData, {
+        .post("http://65.0.169.55:5000/upload", formData, {
           headers: {
             "content-type": "multipart/form-data",
           },

@@ -41,7 +41,7 @@ export default function List() {
 
   const handleDelete = (e) => {
     axios
-      .delete(`http://3.6.87.116:5000/${e}`)
+      .delete(`http://65.0.169.55:5000/${e}`)
       .then((res) => {
         if (res) {
           loadData();

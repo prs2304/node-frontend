@@ -25,7 +25,7 @@ export default function Users() {
   const auth = JSON.parse(localStorage.getItem('user'));
 
   const loadData = async () => {
-    const data = await axios.get(`http://3.6.87.116:5000/data`, {
+    const data = await axios.get(`http://65.0.169.55:5000/data`, {
       headers: {
         "Content-Type": "application/json",
       },
