@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
+import { Alert } from "react-bootstrap";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [show, setShow] = useState(false);
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   // Errors
@@ -46,7 +48,10 @@ export default function Register() {
             localStorage.setItem("user", JSON.stringify(res));
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setMessage(err.message);
+        });
     }
   };
 
@@ -115,6 +120,17 @@ export default function Register() {
             }}
           />
           <div className="text-danger">{passwordError}</div>
+          {message ? (
+            <Alert
+              show={message}
+              variant="danger"
+              onClose={() => setMessage(false)}
+              dismissible
+              style={{ marginTop: "10px" }}
+            >
+              {message}
+            </Alert>
+          ) : null}
           <br />
           <span>
             Back to <Link to="/">Login</Link>?

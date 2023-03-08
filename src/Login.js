@@ -47,12 +47,18 @@ function Login() {
             setMessage(res.data.message);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>{ 
+        console.log(err,"ERR")
+        setMessage(err.message)
+        }
+        );
+        
     }
   };
 
   return (
     <div className="main">
+      {/* <img src="/assets/bg.jpg" className="card-img" alt="Background"/> */}
       <div className="sub-main">
         <div>
           <h2>Sign in</h2>

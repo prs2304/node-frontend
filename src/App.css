@@ -22,11 +22,11 @@
 }
 .sub-main {
   display: flex;
-  width: 55%;
+  width: 50%;
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: rgb(245, 238, 238);
+  background-color: rgb(247, 242, 242);
 }
 
 .App-header {
@@ -131,3 +131,7 @@ h4 {
 table tbody{
   background-color: whitesmoke;
 }
+
+ .dropdown-menu.show{
+    background-color: #dddada;
+  }
