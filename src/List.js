@@ -6,6 +6,7 @@ import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import ReactPaginate from "react-paginate";
 import NoAuth from "./NoAuth";
+import { baseUrl } from "./Common";
 
 export default function List() {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ export default function List() {
   const auth = JSON.parse(localStorage.getItem('user'));
 
   const loadData = async () => {
-    const data = await axios.get(`http://3.6.87.116:5000/list`, {
+    const data = await axios.get(`${baseUrl}/list`, {
       headers: {
         "Content-Type": "application/json",
         "x-access-token": auth.data.token,
@@ -41,7 +42,7 @@ export default function List() {
 
   const handleDelete = (e) => {
     axios
-      .delete(`http://65.0.169.55:5000/${e}`)
+      .delete(`${baseUrl}/${e}`)
       .then((res) => {
         if (res) {
           loadData();

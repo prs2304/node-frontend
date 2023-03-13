@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import { Alert } from "react-bootstrap";
+import { baseUrl } from "./Common";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ export default function Register() {
 
     if (email !== "" && password !== "") {
       axios
-        .post("http://65.0.169.55:5000/register", data, {
+        .post(`${baseUrl}/register`, data, {
           headers: {
             "Content-Type": "application/json",
           },

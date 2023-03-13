@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "./Common";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ function Login() {
 
     if (email !== "" && password !== "") {
       axios
-        .post("http://65.0.169.55:5000/login", data, {
+        .post(`${baseUrl}/login`, data, {
           headers: {
             "Content-Type": "application/json",
           },

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { baseUrl } from "./Common";
 import Navbartop from "./Navbartop";
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
 
     if (files !== "") {
       axios
-        .post("http://65.0.169.55:5000/upload", formData, {
+        .post(`${baseUrl}/upload`, formData, {
           headers: {
             "content-type": "multipart/form-data",
           },
