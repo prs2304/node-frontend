@@ -87,7 +87,7 @@ export default function Users() {
         <h3> User's Registred List</h3>
         <div
           className="table-responsive"
-          style={{ backgroundColor: "lightgrey", display: "grid", width: "95vw" }}
+          style={{ backgroundColor: "#6d6767", width: "95vw" }}
         >
           <table className="table table-hover" style={{"marginBottom": "0rem"}}>
             <thead>
@@ -132,7 +132,9 @@ export default function Users() {
               )}
             </tbody>
           </table>
-          <ReactPaginate 
+        
+        </div>
+        <ReactPaginate 
            previousLabel={"Previous"}
            nextLabel={"Next"}
            pageCount={pageCount}
@@ -143,8 +145,6 @@ export default function Users() {
            disabledClassName={"paginationDisabled"}
            activeClassName={"paginationActive"}
           />
-        </div>
-        
       </div>
       }
     </div>

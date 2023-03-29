@@ -43,10 +43,15 @@ export default function Register() {
         .then((res) => {
           console.log(res);
 
-          if (res.data.result !== "No Details Entered") {
+          if (res.data.result !== "No Details Entered" && res.data.result !== "Email Already Registered") {
             setShow(true);
-            // navigate("/login");
+            setTimeout(() => {
+              navigate("/login");
+          }, 1000);
             localStorage.setItem("user", JSON.stringify(res));
+          }
+          else{
+            setMessage(res.data.result)
           }
         })
         .catch((err) => {
@@ -96,6 +101,7 @@ export default function Register() {
             onChange={(e) => {
               setName(e.target.value);
               setNameError("");
+              setMessage(false);
             }}
           />
           <div className="text-danger">{nameError}</div>
@@ -107,6 +113,7 @@ export default function Register() {
             onChange={(e) => {
               setEmail(e.target.value);
               setEmailError("");
+              setMessage(false);
             }}
           />
           <div className="text-danger">{emailError}</div>
@@ -118,6 +125,7 @@ export default function Register() {
             onChange={(e) => {
               setPassword(e.target.value);
               setPasswordError("");
+              setMessage(false);
             }}
           />
           <div className="text-danger">{passwordError}</div>

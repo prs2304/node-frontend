@@ -11,19 +11,19 @@ import { baseUrl } from "./Common";
 export default function List() {
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
-  const [pageNumber, setPageNumber] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0);
 
   const listPerPage = 5;
-  const pagesVisited =pageNumber * listPerPage;
+  const pagesVisited = pageNumber * listPerPage;
   const pageCount = Math.ceil(data.length / listPerPage);
-  const onPageChange =({selected})=>{
+  const onPageChange = ({ selected }) => {
     setPageNumber(selected);
-  }
+  };
 
   useEffect(() => {
     loadData();
   }, []);
-  const auth = JSON.parse(localStorage.getItem('user'));
+  const auth = JSON.parse(localStorage.getItem("user"));
 
   const loadData = async () => {
     const data = await axios.get(`${baseUrl}/list`, {
@@ -35,8 +35,6 @@ export default function List() {
     // console.log("DATA", data?.data);
     setData(data.data);
   };
-  
-  
 
   // console.log(data.auth,"AUTH")
 
@@ -46,114 +44,119 @@ export default function List() {
       .then((res) => {
         if (res) {
           loadData();
-          setShow(true)
+          setShow(true);
         }
       })
       .catch((err) => {
         console.log(err);
       });
-    };
-    
-    return (
-      <div className="App">
+  };
+
+  return (
+    <div className="App">
       <Navbartop />
       {/* <h1>List page</h1> */}
-      {data.auth == false ?
-        <NoAuth />:
-      <div className="list">
-        <ToastContainer position="top-center" className="p-3">
-          <Toast
-            className="d-inline-block m-1"
-            bg="success"
-            onClose={() => setShow(false)}
-            show={show}
-            delay={3000}
-            autohide
+      {data.auth == false ? (
+        <NoAuth />
+      ) : (
+        <div className="list">
+          <ToastContainer position="top-center" className="p-3">
+            <Toast
+              className="d-inline-block m-1"
+              bg="success"
+              onClose={() => setShow(false)}
+              show={show}
+              delay={3000}
+              autohide
+            >
+              <Toast.Header bg="Success">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  className="bi bi-check"
+                  viewBox="0 0 16 16"
+                  color="green"
+                >
+                  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                </svg>
+                <strong className="me-auto">Deleted Successfully</strong>
+              </Toast.Header>
+            </Toast>
+          </ToastContainer>
+
+          <div>
+            <h3>Files List</h3>
+            {/* <button type="button" class="btn btn-primary">ADD</button> */}
+          </div>
+
+          <div
+            className="table-responsive"
+            style={{ backgroundColor: "#6d6767", width: "95vw" }}
           >
-            <Toast.Header bg="Success">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                fill="currentColor"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-                color="green"
-              >
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-              <strong className="me-auto">Deleted Successfully</strong>
-            </Toast.Header>
-          </Toast>
-        </ToastContainer>
-        <h3> List</h3>
-        <div
-          className="table-responsive"
-          style={{ backgroundColor: "lightgrey",width: "95vw"}}
-        >
-          <table className="table table-hover mb-0">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>File Name</th>
-                <th>File Id</th>
-                <th>Date</th>
-                <th>Option</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.includes("No Data Available") ? (
+            <table className="table table-hover mb-0">
+              <thead>
                 <tr>
-                  <td>{}</td>
-                  <td>{data}</td>
-                  <td>{}</td>
-                  <td>{}</td>
+                  <th>No</th>
+                  <th>File Name</th>
+                  <th>File Id</th>
+                  <th>Date</th>
+                  <th>Option</th>
                 </tr>
-              ) : (
-                data
-                .slice(pagesVisited,pagesVisited + listPerPage)
-                .map((file, index) => (
-                  <tr key={index}>
-                    <td>{++index}</td>
-                    <td>{file.file_name}</td>
-                    <td>{file.file_id}</td>
-                    <td>
-                      {moment(file?.upload_date_time).format(
-                        "DD-MM-YYYY/hh:mm:ss"
-                      )}
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger btn-sm"
-                        onClick={() => {
-                          handleDelete(file.file_id);
-                        }}
-                        // onClick={() => setShow(true)}
-                      >
-                        DELETE
-                      </button>
-                    </td>
+              </thead>
+              <tbody>
+                {data.includes("No Data Available") ? (
+                  <tr>
+                    <td>{}</td>
+                    <td>{data}</td>
+                    <td>{}</td>
+                    <td>{}</td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-          <ReactPaginate 
-           previousLabel={"Previous"}
-           nextLabel={"Next"}
-           pageCount={pageCount}
-           onPageChange={onPageChange}
-           containerClassName={"paginationBtn"}
-           previousLinkClassName={"previousBtn"}
-           nextLinkClassName={"nextBtn"}
-           disabledClassName={"paginationDisabled"}
-           activeClassName={"paginationActive"}
+                ) : (
+                  data
+                    .slice(pagesVisited, pagesVisited + listPerPage)
+                    .map((file, index) => (
+                      <tr key={index}>
+                        <td>{++index}</td>
+                        <td>{file.file_name}</td>
+                        <td>{file.file_id}</td>
+                        <td>
+                          {moment(file?.upload_date_time).format(
+                            "DD-MM-YYYY/hh:mm:ss"
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            className="btn btn-outline-danger btn-sm"
+                            onClick={() => {
+                              handleDelete(file.file_id);
+                            }}
+                            // onClick={() => setShow(true)}
+                          >
+                            DELETE
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                )}
+              </tbody>
+            </table>
+          </div>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={onPageChange}
+            containerClassName={"paginationBtn"}
+            previousLinkClassName={"previousBtn"}
+            nextLinkClassName={"nextBtn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
           />
         </div>
-       
-      </div>
-      }
+      )}
     </div>
   );
 }

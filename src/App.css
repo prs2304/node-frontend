@@ -124,12 +124,12 @@ h4 {
 
 .paginationBtn a:hover {
   color: black;
-  background-color: rgb(4, 173, 224);
+  background-color: rgb(166 169 170);
 }
 
 .paginationActive a{
   color: white;
-  background-color: rgb(4, 173, 224);
+  background-color: rgb(166 169 170);
   /* padding: 2px 0px; */
 }
 table tbody{
