@@ -88,10 +88,10 @@ export default function List() {
         </ToastContainer>
         <h3> List</h3>
         <div
-          className="col-md-9 mb-3"
-          style={{ backgroundColor: "lightgrey", display: "grid" }}
+          className="table-responsive"
+          style={{ backgroundColor: "lightgrey",width: "95vw"}}
         >
-          <table className="table table-hover" style={{"marginBottom": "0rem"}}>
+          <table className="table table-hover mb-0">
             <thead>
               <tr>
                 <th>No</th>
@@ -139,8 +139,7 @@ export default function List() {
               )}
             </tbody>
           </table>
-        </div>
-        <ReactPaginate 
+          <ReactPaginate 
            previousLabel={"Previous"}
            nextLabel={"Next"}
            pageCount={pageCount}
@@ -151,6 +150,8 @@ export default function List() {
            disabledClassName={"paginationDisabled"}
            activeClassName={"paginationActive"}
           />
+        </div>
+       
       </div>
       }
     </div>

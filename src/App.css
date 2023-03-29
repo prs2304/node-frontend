@@ -16,13 +16,14 @@
 .main {
   display: flex;
   justify-content: right;
-  height: 657px;
-
+  /* height: 657px; */
+min-height: 100vh;
   background-color: rgba(20, 20, 20, 0.856);
 }
 .sub-main {
   display: flex;
-  width: 50%;
+  /* width: 50%; */
+  min-width: 50vw;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -33,6 +34,7 @@
   background-color: #e5e6e7;
   min-height: 100vh;
   display: flex;
+  margin-top: 50px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -43,6 +45,7 @@
 .list {
   background-color: #e5e6e7;
   min-height: 100vh;
+  margin-top: 55px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,8 +104,9 @@ h4 {
 } */
 
 .paginationBtn{
-  width: 80%;
-  height: 40px;
+  /* width: 80vw;
+  height: 40px; */
+  margin-top: 10px;
   list-style: none;
   display: flex;
   justify-content: center;

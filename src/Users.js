@@ -86,8 +86,8 @@ export default function Users() {
         </ToastContainer>
         <h3> User's Registred List</h3>
         <div
-          className="col-md-9 mb-3"
-          style={{ backgroundColor: "lightgrey", display: "grid" }}
+          className="table-responsive"
+          style={{ backgroundColor: "lightgrey", display: "grid", width: "95vw" }}
         >
           <table className="table table-hover" style={{"marginBottom": "0rem"}}>
             <thead>
@@ -132,8 +132,7 @@ export default function Users() {
               )}
             </tbody>
           </table>
-        </div>
-        <ReactPaginate 
+          <ReactPaginate 
            previousLabel={"Previous"}
            nextLabel={"Next"}
            pageCount={pageCount}
@@ -144,6 +143,8 @@ export default function Users() {
            disabledClassName={"paginationDisabled"}
            activeClassName={"paginationActive"}
           />
+        </div>
+        
       </div>
       }
     </div>

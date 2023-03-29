@@ -71,7 +71,7 @@ function App() {
             setFileError("");
           }}
           multiple
-          style={{ width: "fit-content" }}
+          style={{ width: "50vw" }}
         />
         <div className="text-danger">{fileError}</div>
         {show ? (
