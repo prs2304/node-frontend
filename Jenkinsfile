@@ -8,8 +8,8 @@ pipeline{
         }
         stage('Docker Build'){
             steps{
-                sh 'docker build -t frontend .'
-                sh 'docker run -d -p 80:80 frontend'
+                sh 'sudo docker build -t frontend .'
+                sh 'sudo docker run -d -p 80:80 frontend'
             }
         }
     }
