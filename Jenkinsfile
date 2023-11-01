@@ -21,5 +21,6 @@ pipeline{
                  sh 'docker push raja2304/frontend'
                 }
             }
+        }
     }
 }
