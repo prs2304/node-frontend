@@ -18,7 +18,7 @@ pipeline{
                  withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
                     sh 'docker login -u raja2304 -p ${docker}'
                  }  
-                 sh 'docker push frontend raja2304/node-frontend:1'
+                 sh 'docker push raja2304/node-frontend:1'
                 }
             }
         }
